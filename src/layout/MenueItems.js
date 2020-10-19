@@ -52,6 +52,18 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
+      <SubMenu key="firestore" icon={!topMenu && <FeatherIcon icon="database" />} title="Firestore Crud">
+        <Menu.Item key="fbView">
+          <NavLink onClick={toggleCollapsed} to={`${path}/firestore/fbView`}>
+            View All
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="fbAdd">
+          <NavLink onClick={toggleCollapsed} to={`${path}/firestore/fbAdd`}>
+            Add New
+          </NavLink>
+        </Menu.Item>
+      </SubMenu>
       <SubMenu key="project" icon={!topMenu && <FeatherIcon icon="target" />} title="Project">
         <Menu.Item key="view">
           <NavLink onClick={toggleCollapsed} to={`${path}/project/view`}>
@@ -124,11 +136,6 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
       </SubMenu>
 
       {!topMenu && <p className="sidebar-nav-title">Applications</p>}
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="calendar" />} key="calendar">
-        <NavLink onClick={toggleCollapsed} to={`${path}/app/calendar/year`}>
-          Calendar
-        </NavLink>
-      </Menu.Item>
       <Menu.Item icon={!topMenu && <FeatherIcon icon="message-square" />} key="chat">
         <NavLink onClick={toggleCollapsed} to={`${path}/main/chat/private/rofiq@gmail.com`}>
           Chat
