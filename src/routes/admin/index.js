@@ -6,6 +6,7 @@ import Pages from './pages';
 import Ecommerce from './ecommerce';
 import withAdminLayout from '../../layout/withAdminLayout';
 
+const Calendar = lazy(() => import('../../container/calendar/Calendar'));
 const Charts = lazy(() => import('./charts'));
 const Components = lazy(() => import('./components'));
 const Maps = lazy(() => import('./maps'));
@@ -56,6 +57,7 @@ const Admin = () => {
         <Route path={`${path}/app/to-do`} component={ToDo} />
         <Route path={`${path}/app/note`} component={Note} />
         <Route path={`${path}/app/contact`} component={Contact} />
+        <Route path={`${path}/app/calendar`} component={Calendar} />
       </Suspense>
     </Switch>
   );
