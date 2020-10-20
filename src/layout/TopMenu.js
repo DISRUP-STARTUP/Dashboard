@@ -86,6 +86,7 @@ const TopMenu = () => {
             <ul className="subMenu">
               <li>
                 <NavLink onClick={addParentActive} to={`${path}/app/calendar/year`}>
+                  <FeatherIcon icon="calendar" />
                   Calendar
                 </NavLink>
               </li>
