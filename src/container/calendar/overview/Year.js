@@ -10,6 +10,7 @@ import { Cards } from '../../../components/cards/frame/cards-frame';
 import { Button } from '../../../components/buttons/buttons';
 import { Modal } from '../../../components/modals/antd-modals';
 import { eventVisible, addNewEvents } from '../../../redux/calendar/actionCreator';
+import './style.css';
 
 const YearCalendar = () => {
   const dispatch = useDispatch();
