@@ -499,6 +499,11 @@ const TopMenu = () => {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink onClick={addParentActive} to={`${path}/components/starter`}>
+                      Starter
+                    </NavLink>
+                  </li>
+                  <li>
                     <NavLink onClick={addParentActive} to={`${path}/components/steps`}>
                       Steps
                     </NavLink>
