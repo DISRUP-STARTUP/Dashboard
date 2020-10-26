@@ -581,7 +581,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
         </Menu.Item>
         <Menu.Item key="Vector">
           <NavLink onClick={toggleCollapsed} to={`${path}/maps/Vector`}>
-            Vector Maps
+            Simple Map
           </NavLink>
         </Menu.Item>
       </SubMenu>
