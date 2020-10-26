@@ -8,7 +8,7 @@ import { PageHeader } from '../../../components/page-headers/page-headers';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { Button } from '../../../components/buttons/buttons';
 import { Main, BasicFormWrapper } from '../../styled';
-import { fbDataSubmit, fbFileUploder, fbFileClear } from '../../../redux/firestore/actionCreator';
+import { fbDataSubmit, fbFileUploder, fbFileClear } from '../../../redux/firebase/firestore/actionCreator';
 import Heading from '../../../components/heading/heading';
 
 const { Option } = Select;

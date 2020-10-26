@@ -1,0 +1,61 @@
+import actions from './actions';
+
+const {
+  fbLoginBegin,
+  fbLoginSuccess,
+  fbLoginErr,
+  fbLogOutBegin,
+  fbLogOutSuccess,
+  fbLogOutErr,
+  fbSignUpBegin,
+  fbSignUpSuccess,
+  fbSignUpErr,
+} = actions;
+
+const fbAuthLogin = data => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const fb = getFirebase();
+    try {
+      await dispatch(fbLoginBegin());
+      await fb.auth().signInWithEmailAndPassword(data.email, data.password);
+      await dispatch(fbLoginSuccess(data));
+    } catch (err) {
+      await dispatch(fbLoginErr(err));
+    }
+  };
+};
+
+const fbAuthLogout = () => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const fb = getFirebase();
+    try {
+      await dispatch(fbLogOutBegin());
+      await fb.auth().signOut();
+      await dispatch(fbLogOutSuccess());
+    } catch (err) {
+      await dispatch(fbLogOutErr(err));
+    }
+  };
+};
+
+const fbAuthSignUp = newUser => {
+  return async (dispatch, getState, { getFirebase, getFirestore }) => {
+    const db = getFirestore();
+    const fb = getFirebase();
+    try {
+      await dispatch(fbSignUpBegin());
+      const resp = await fb.auth().createUserWithEmailAndPassword(newUser.email, newUser.password);
+      await db
+        .collection('users')
+        .doc(resp.user.uid)
+        .set({
+          ...newUser,
+        });
+      await dispatch(fbSignUpSuccess());
+    } catch (err) {
+      await dispatch(fbSignUpErr(err));
+    }
+  };
+};
+
+export { fbAuthLogin, fbAuthLogout, fbAuthSignUp };

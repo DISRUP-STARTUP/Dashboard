@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
+import { useDispatch } from 'react-redux';
 import { AuthWrapper } from './style';
 import { Checkbox } from '../../../../components/checkbox/checkbox';
 import Heading from '../../../../components/heading/heading';
+import { fbAuthSignUp } from '../../../../redux/firebase/auth/actionCreator';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     values: null,
     checked: null,
   });
+
   const handleSubmit = values => {
-    setState({ ...state, values });
+    dispatch(fbAuthSignUp({ ...values, terms: state.checked }));
   };
 
   const onChange = checked => {

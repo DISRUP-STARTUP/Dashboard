@@ -8,7 +8,7 @@ import { Main, TableWrapper } from '../../styled';
 import { Button } from '../../../components/buttons/buttons';
 import { Cards } from '../../../components/cards/frame/cards-frame';
 import { PageHeader } from '../../../components/page-headers/page-headers';
-import { fbDataDelete, fbDataRead, fbDataSearch } from '../../../redux/firestore/actionCreator';
+import { fbDataDelete, fbDataRead, fbDataSearch } from '../../../redux/firebase/firestore/actionCreator';
 
 const ViewPage = () => {
   const dispatch = useDispatch();

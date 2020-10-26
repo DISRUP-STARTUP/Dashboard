@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,21 +6,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import { AuthWrapper } from './style';
 import { login } from '../../../../redux/authentication/actionCreator';
+import { fbAuthLogin } from '../../../../redux/firebase/auth/actionCreator';
 import { Checkbox } from '../../../../components/checkbox/checkbox';
 import Heading from '../../../../components/heading/heading';
 
 const SignIn = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.auth.loading);
+  const { isLoading, error, isFbAuthenticate } = useSelector(state => {
+    return {
+      error: state.firebaseAuth.error,
+      isLoading: state.firebaseAuth.loading,
+      isFbAuthenticate: state.fb.auth.uid,
+    };
+  });
   const [form] = Form.useForm();
   const [state, setState] = useState({
     checked: null,
   });
 
-  const handleSubmit = () => {
+  const handleFbLogin = useCallback(() => {
     dispatch(login());
     history.push('/admin');
+  }, [dispatch, history]);
+
+  useEffect(() => {
+    if (isFbAuthenticate) handleFbLogin();
+  }, [isFbAuthenticate, handleFbLogin]);
+
+  const handleSubmit = values => {
+    dispatch(fbAuthLogin(values));
   };
 
   const onChange = checked => {
@@ -38,14 +53,17 @@ const SignIn = () => {
             Sign in to <span className="color-secondary">Admin</span>
           </Heading>
           <Form.Item
-            name="username"
-            rules={[{ message: 'Please input your username or Email!', required: true }]}
-            initialValue="name@example.com"
-            label="Username or Email Address"
+            name="email"
+            rules={[{ message: 'Please input your Email!', required: true }]}
+            label="Email Address"
           >
             <Input />
           </Form.Item>
-          <Form.Item name="password" initialValue="123456" label="Password">
+          <Form.Item
+            rules={[{ message: 'Please input your password!', required: true }]}
+            name="password"
+            label="Password"
+          >
             <Input.Password placeholder="Password" />
           </Form.Item>
           <div className="auth-form-action">
@@ -54,6 +72,7 @@ const SignIn = () => {
               Forgot password?
             </NavLink>
           </div>
+          {error ? <p>{error.message}</p> : null}
           <Form.Item>
             <Button className="btn-signin" htmlType="submit" type="primary" size="large">
               {isLoading ? 'Loading...' : 'Sign In'}
