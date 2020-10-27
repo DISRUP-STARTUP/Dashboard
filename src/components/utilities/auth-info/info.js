@@ -19,9 +19,10 @@ const AuthInfo = () => {
   const dispatch = useDispatch();
   const { isLogout } = useSelector(state => {
     return {
-      isLogout: state.firebaseAuth.isLogout,
+      isLogout: state.fb.auth.uid,
     };
   });
+
   const [state, setState] = useState({
     flag: 'english',
   });
@@ -32,7 +33,7 @@ const AuthInfo = () => {
     dispatch(fbAuthLogout());
   };
 
-  if (isLogout) dispatch(logOut());
+  if (!isLogout) dispatch(logOut());
 
   const userContent = (
     <UserDropDwon>

@@ -58,4 +58,32 @@ const fbAuthSignUp = newUser => {
   };
 };
 
-export { fbAuthLogin, fbAuthLogout, fbAuthSignUp };
+const fbAuthLoginWithGoogle = () => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const fb = getFirebase();
+    const provider = new fb.auth.GoogleAuthProvider();
+    try {
+      await dispatch(fbLoginBegin());
+      const result = await fb.auth().signInWithPopup(provider);
+      await dispatch(fbLoginSuccess(result));
+    } catch (err) {
+      await dispatch(fbLoginErr(err));
+    }
+  };
+};
+
+const fbAuthLoginWithFacebook = () => {
+  return async (dispatch, getState, { getFirebase }) => {
+    const fb = getFirebase();
+    const provider = new fb.auth.FacebookAuthProvider();
+    try {
+      await dispatch(fbLoginBegin());
+      const result = await fb.auth().signInWithPopup(provider);
+      await dispatch(fbLoginSuccess(result));
+    } catch (err) {
+      await dispatch(fbLoginErr(err));
+    }
+  };
+};
+
+export { fbAuthLogin, fbAuthLogout, fbAuthSignUp, fbAuthLoginWithGoogle, fbAuthLoginWithFacebook };
