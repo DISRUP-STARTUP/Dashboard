@@ -3,8 +3,8 @@ import { Row, Col } from 'antd';
 import { PageHeader } from '../../components/page-headers/page-headers';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import { Main, FormGroupWrapper } from '../styled';
-import SignIn from '../profile/authentication/overview/SignIn';
-import Signup from '../profile/authentication/overview/Signup';
+import SignIn from '../profile/authentication/overview/FbSignIn';
+import Signup from '../profile/authentication/overview/FbSignup';
 import ForgotPassword from '../profile/authentication/overview/ForgotPassword';
 
 const Forms = () => {
