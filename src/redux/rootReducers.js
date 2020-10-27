@@ -24,7 +24,8 @@ import Contact from './contact/reducers';
 import Profile from './profile/reducers';
 import Calender from './calendar/reducers';
 
-import { fsCrudReducer, fsSingleCrudReducer } from './firestore/reducers';
+import { fsCrudReducer, fsSingleCrudReducer } from './firebase/firestore/reducers';
+import firebaseAuth from './firebase/auth/reducers';
 
 const rootReducers = combineReducers({
   fb: firebaseReducer,
@@ -59,6 +60,7 @@ const rootReducers = combineReducers({
   Contact,
   Profile,
   Calender,
+  firebaseAuth,
 });
 
 export default rootReducers;

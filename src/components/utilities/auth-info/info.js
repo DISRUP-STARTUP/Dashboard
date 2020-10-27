@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Avatar } from 'antd';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FeatherIcon from 'feather-icons-react';
 import { InfoWraper, NavAuth, UserDropDwon } from './auth-info-style';
 import Message from './message';
@@ -12,10 +12,17 @@ import { Popover } from '../../popup/popup';
 import { Dropdown } from '../../dropdown/dropdown';
 
 import { logOut } from '../../../redux/authentication/actionCreator';
+import { fbAuthLogout } from '../../../redux/firebase/auth/actionCreator';
 import Heading from '../../heading/heading';
 
-const AuthInfo = ({ rtl }) => {
+const AuthInfo = () => {
   const dispatch = useDispatch();
+  const { isLogout } = useSelector(state => {
+    return {
+      isLogout: state.fb.auth.uid,
+    };
+  });
+
   const [state, setState] = useState({
     flag: 'english',
   });
@@ -23,8 +30,10 @@ const AuthInfo = ({ rtl }) => {
 
   const SignOut = e => {
     e.preventDefault();
-    dispatch(logOut());
+    dispatch(fbAuthLogout());
   };
+
+  if (!isLogout) dispatch(logOut());
 
   const userContent = (
     <UserDropDwon>

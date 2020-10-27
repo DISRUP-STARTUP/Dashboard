@@ -1,18 +1,46 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 import { AuthWrapper } from './style';
 import { Checkbox } from '../../../../components/checkbox/checkbox';
 import Heading from '../../../../components/heading/heading';
+import {
+  fbAuthSignUp,
+  fbAuthLoginWithGoogle,
+  fbAuthLoginWithFacebook,
+} from '../../../../redux/firebase/auth/actionCreator';
+import { login } from '../../../../redux/authentication/actionCreator';
 
 const SignUp = () => {
+  const { isSignUpError, isSignUpLoading, isFbAuthenticate } = useSelector(state => {
+    return {
+      isSignUpError: state.firebaseAuth.isSignUpError,
+      isSignUpLoading: state.firebaseAuth.isSignUpLoading,
+      isFbAuthenticate: state.fb.auth.uid,
+    };
+  });
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     values: null,
     checked: null,
   });
+
+  const handleFbLogin = useCallback(() => {
+    dispatch(login());
+    history.push('/admin');
+  }, [dispatch, history]);
+
+  useEffect(() => {
+    if (isFbAuthenticate) {
+      handleFbLogin();
+    }
+  }, [isFbAuthenticate, handleFbLogin]);
+
   const handleSubmit = values => {
-    setState({ ...state, values });
+    dispatch(fbAuthSignUp({ ...values, terms: state.checked }));
   };
 
   const onChange = checked => {
@@ -58,9 +86,10 @@ const SignUp = () => {
               Creating an account means you’re okay with our Terms of Service and Privacy Policy
             </Checkbox>
           </div>
+          {isSignUpError ? <p>{isSignUpError.message}</p> : null}
           <Form.Item>
             <Button className="btn-create" htmlType="submit" type="primary" size="large">
-              Create Account
+              {isSignUpLoading ? 'Loading...' : 'Create Account'}
             </Button>
           </Form.Item>
           <p className="form-divider">
@@ -68,20 +97,20 @@ const SignUp = () => {
           </p>
           <ul className="social-login signin-social">
             <li>
-              <a className="google-signup" href="/">
+              <Link onClick={() => dispatch(fbAuthLoginWithGoogle)} className="google-signup" to="#">
                 <img src={require('../../../../static/img/google.png')} alt="" />
                 <span>Sign up with Google</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="facebook-sign" href="/">
+              <Link onClick={() => dispatch(fbAuthLoginWithFacebook)} className="facebook-sign" to="#">
                 <FacebookOutlined />
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="twitter-sign" href="/">
+              <Link className="twitter-sign" to="#">
                 <TwitterOutlined />
-              </a>
+              </Link>
             </li>
           </ul>
         </Form>
