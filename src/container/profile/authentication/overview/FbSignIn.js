@@ -56,7 +56,7 @@ const SignIn = () => {
       <div className="auth-contents">
         <Form name="login" form={form} onFinish={handleSubmit} layout="vertical">
           <Heading as="h3">
-            Sign in to <span className="color-secondary">Admin</span>
+            Sign in With Firebase to <span className="color-secondary">Admin</span>
           </Heading>
           <Form.Item
             name="email"
