@@ -55,7 +55,7 @@ const SignUp = () => {
       <div className="auth-contents">
         <Form name="register" onFinish={handleSubmit} layout="vertical">
           <Heading as="h3">
-            Sign Up to <span className="color-secondary">Admin</span>
+            Sign Up With Firebase to <span className="color-secondary">Admin</span>
           </Heading>
           <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please input your Full name!' }]}>
             <Input placeholder="Full name" />
