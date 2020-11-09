@@ -203,6 +203,35 @@ const TopMenu = () => {
               </li>
             </ul>
           </li>
+
+          <li className="has-subMenu">
+            <Link to="#" className="parent">
+              Users
+            </Link>
+            <ul className="subMenu">
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/users/team`}>
+                  Team
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/users/users`}>
+                  Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/users/add-user/info`}>
+                  Add User
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/users/dataTable`}>
+                  User Table
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
           <li className="mega-item has-subMenu">
             <Link to="#" className="parent">
               Pages
@@ -240,10 +269,6 @@ const TopMenu = () => {
                       Add User
                     </NavLink>
                   </li>
-                </ul>
-              </li>
-              <li>
-                <ul>
                   <li>
                     <NavLink onClick={addParentActive} to={`${path}/pages/dataTable`}>
                       User Table
@@ -254,9 +279,18 @@ const TopMenu = () => {
                       Gallery
                     </NavLink>
                   </li>
+                </ul>
+              </li>
+              <li>
+                <ul>
                   <li>
                     <NavLink onClick={addParentActive} to={`${path}/pages/pricing`}>
                       Pricing
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/pages/comingSoon`}>
+                      Coming Soon
                     </NavLink>
                   </li>
                   <li>
@@ -277,6 +311,16 @@ const TopMenu = () => {
                   <li>
                     <NavLink onClick={addParentActive} to={`${path}/pages/404`}>
                       404
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/pages/starter`}>
+                      Skeleton
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/pages/wizards`}>
+                      Wizards
                     </NavLink>
                   </li>
                 </ul>
@@ -506,11 +550,7 @@ const TopMenu = () => {
                       Statistics
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/components/starter`}>
-                      Starter
-                    </NavLink>
-                  </li>
+
                   <li>
                     <NavLink onClick={addParentActive} to={`${path}/components/steps`}>
                       Steps

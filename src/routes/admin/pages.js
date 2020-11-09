@@ -7,10 +7,10 @@ const Pricing = lazy(() => import('../../container/pages/PricingTable'));
 const Gallery = lazy(() => import('../../container/pages/Gallery'));
 const Faq = lazy(() => import('../../container/pages/Faq'));
 const Search = lazy(() => import('../../container/pages/SearchResult'));
-const Users = lazy(() => import('../../container/pages/Users'));
-const AddUser = lazy(() => import('../../container/pages/AddUsers'));
-const DataTable = lazy(() => import('../../container/pages/UserListDataTable'));
-const Team = lazy(() => import('../../container/pages/Team'));
+const ComingSoon = lazy(() => import('../../container/pages/ComingSoon'));
+const BlankPage = lazy(() => import('../../container/pages/BlankPage'));
+const Wizards = lazy(() => import('../../container/pages/wizards/Wizards'));
+const Settings = lazy(() => import('../../container/profile/settings/Settings'));
 
 const PagesRoute = () => {
   const { path } = useRouteMatch();
@@ -22,10 +22,10 @@ const PagesRoute = () => {
       <Route path={`${path}/gallery`} component={Gallery} />
       <Route path={`${path}/faq`} component={Faq} />
       <Route path={`${path}/search`} component={Search} />
-      <Route path={`${path}/users`} component={Users} />
-      <Route path={`${path}/add-user`} component={AddUser} />
-      <Route path={`${path}/dataTable`} component={DataTable} />
-      <Route path={`${path}/team`} component={Team} />
+      <Route path={`${path}/starter`} component={BlankPage} />
+      <Route path={`${path}/comingSoon`} component={ComingSoon} />
+      <Route path={`${path}/wizards`} component={Wizards} />
+      <Route path={`${path}/settings`} component={Settings} />
     </Switch>
   );
 };

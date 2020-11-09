@@ -635,6 +635,50 @@ const Main = Styled.div`
             margin: 5px !important;
         }
     }
+
+    .wizard-side-border{
+        >.ant-card{
+            .ant-card-body{
+                padding: 0 25px !important;
+            }
+        }
+        .payment-method-form.theme-light{
+            .shipping-selection__card{
+                .ant-card-body{
+                    padding: 25px 0 !important;
+                }
+            }
+        }
+        .shipping-selection__card{
+            .ant-card-body{
+                padding: 25px !important;
+            }
+        }
+        .atbd-review-order{
+            .ant-card-body{
+                padding: 25px 25px 0 !important;
+            }
+        }
+        
+        .ant-steps {
+            padding: 50px;
+            @media only screen and (max-width: 1399px) {
+                padding: 25px;
+            }
+        }
+        .steps-wrapper{
+            padding: 50px;
+            @media only screen and (max-width: 1399px) {
+                padding: 25px;
+            }
+            border-left: 1px solid ${({ theme }) => theme['border-color-light']};
+        }
+    }
+    .editor-compose > div {
+        position: static;
+        max-width: 100%;
+        margin: 25px 0;
+    }
 `;
 
 const ButtonsGroupWrapper = Styled.div`
