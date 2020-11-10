@@ -190,7 +190,7 @@ const WizardsSix = () => {
                 <BasicFormWrapper className="basic-form-inner">
                   <div className="atbd-form-checkout">
                     <Row justify="center">
-                      <Col sm={22} xs={24}>
+                      <Col xs={24}>
                         <div className="create-account-form">
                           <Heading as="h4">1. Please Create Your Account</Heading>
                           <Form form={form} name="account">
@@ -233,7 +233,7 @@ const WizardsSix = () => {
                 <BasicFormWrapper className="basic-form-inner">
                   <div className="atbd-form-checkout">
                     <Row justify="center">
-                      <Col sm={22} xs={24}>
+                      <Col xs={24}>
                         <div className="shipping-form">
                           <Heading as="h4">2. Please Fill in Your Shipping Address</Heading>
                           <Form form={form} name="address">
@@ -292,7 +292,7 @@ const WizardsSix = () => {
                 <BasicFormWrapper className="basic-form-inner">
                   <div className="atbd-form-checkout">
                     <Row justify="center">
-                      <Col sm={22} xs={24}>
+                      <Col xs={24}>
                         <div className="payment-method-form">
                           <Heading as="h4">3. Please Please Select Your Payment Method</Heading>
                           <div className="shipping-selection">
@@ -394,9 +394,11 @@ const WizardsSix = () => {
             },
             {
               title: (
-                <div className="wizard-item">
-                  <h2>Review Order</h2>
-                  <p>Lorem Ipsum is simply dummy text of the dummy typesetting industry.</p>
+                <div className={`wizard-item ${status === 'finish' && 'block'}`}>
+                  <h2 className={`${status === 'finish' ? 'none' : 'block'}`}>Review Order</h2>
+                  <p className={`${status === 'finish' ? 'none' : 'block'}`}>
+                    Lorem Ipsum is simply dummy text of the dummy typesetting industry.
+                  </p>
                   <img src={require(`../../../../static/img/wizards/${status !== 'finish' ? 3 : 4}.svg`)} alt="" />
                 </div>
               ),
@@ -466,7 +468,7 @@ const WizardsSix = () => {
                               </ProductTable>
 
                               <Row justify="end">
-                                <Col xxl={8} xl={5} md={9} sm={14} xs={24} offset={!rtl ? 10 : 0}>
+                                <Col xl={20} xs={24} offset={!rtl ? 10 : 0}>
                                   <OrderSummary>
                                     <div className="invoice-summary-inner">
                                       <ul className="summary-list">
