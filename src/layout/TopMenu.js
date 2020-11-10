@@ -87,22 +87,28 @@ const TopMenu = () => {
               Apps
             </Link>
             <ul className="subMenu">
-              <li>
-                <NavLink onClick={addParentActive} to={`${path}/app/calendar/month`}>
-                  <FeatherIcon icon="calendar" />
-                  Calendar
-                </NavLink>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="mail" />
+                  Email
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/email/inbox`}>
+                      Inbox
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/email/single/1585118055048`}>
+                      Read Email
+                    </NavLink>
+                  </li>
+                </ul>
               </li>
               <li>
                 <NavLink onClick={addParentActive} to={`${path}/main/chat/private/rofiq@gmail.com`}>
                   <FeatherIcon icon="message-square" />
                   Chat
-                </NavLink>
-              </li>
-              <li>
-                <NavLink onClick={addParentActive} to={`${path}/app/contact`}>
-                  <FeatherIcon icon="user-check" />
-                  Contact
                 </NavLink>
               </li>
               <li className="has-subMenu-left">
@@ -155,31 +161,7 @@ const TopMenu = () => {
               </li>
               <li className="has-subMenu-left">
                 <Link to="#" className="parent">
-                  <FeatherIcon icon="mail" />
-                  Email
-                </Link>
-                <ul className="subMenu">
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/email/inbox`}>
-                      Inbox
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/email/single/1585118055048`}>
-                      Read Email
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <NavLink onClick={addParentActive} to={`${path}/app/note/all`}>
-                  <FeatherIcon icon="bookmark" />
-                  Note
-                </NavLink>
-              </li>
-              <li className="has-subMenu-left">
-                <Link to="#" className="parent">
-                  <FeatherIcon icon="user" />
+                  <FeatherIcon icon="aperture" />
                   Social App
                 </Link>
                 <ul className="subMenu">
@@ -188,21 +170,109 @@ const TopMenu = () => {
                       My Profile
                     </NavLink>
                   </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="target" />
+                  Project
+                </Link>
+                <ul className="subMenu">
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/profile/settings`}>
-                      Settings
+                    <NavLink onClick={addParentActive} to={`${path}/project/view/grid`}>
+                      Project Grid
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/project/view/list`}>
+                      Project List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/project/create`}>
+                      Create Project
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/project/projectDetails/1`}>
+                      Project Details
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/app/calendar/month`}>
+                  <FeatherIcon icon="calendar" />
+                  Calendar
+                </NavLink>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="users" />
+                  Users
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/users/team`}>
+                      Team
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/users/users`}>
+                      Users
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/users/add-user/info`}>
+                      Add User
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/users/dataTable`}>
+                      User Table
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="user-plus" />
+                  Contact
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/contact/addNew`}>
+                      Contact Create
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/contact/grid`}>
+                      Contact Grid
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/contact/list`}>
+                      Contact List
                     </NavLink>
                   </li>
                 </ul>
               </li>
               <li>
+                <NavLink onClick={addParentActive} to={`${path}/app/note/all`}>
+                  <FeatherIcon icon="file-text" />
+                  Note
+                </NavLink>
+              </li>
+              <li>
                 <NavLink onClick={addParentActive} to={`${path}/app/to-do/`}>
-                  <FeatherIcon icon="activity" />
+                  <FeatherIcon icon="check-square" />
                   To Do
                 </NavLink>
               </li>
             </ul>
           </li>
+
           <li className="mega-item has-subMenu">
             <Link to="#" className="parent">
               Pages
@@ -211,33 +281,28 @@ const TopMenu = () => {
               <li>
                 <ul>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/project/view`}>
-                      Project
+                    <NavLink onClick={addParentActive} to={`${path}/settings`}>
+                      Settings
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/project/create`}>
-                      Project Details
+                    <NavLink onClick={addParentActive} to={`${path}/gallery`}>
+                      Gallery
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/project/projectDetails/1`}>
-                      Create Project
+                    <NavLink onClick={addParentActive} to={`${path}/pricing`}>
+                      Pricing
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/team`}>
-                      Team
+                    <NavLink onClick={addParentActive} to={`${path}/faq`}>
+                      Faq`s
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/users`}>
-                      User
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/add-user/info`}>
-                      Add User
+                    <NavLink onClick={addParentActive} to={`${path}/search`}>
+                      Search Results
                     </NavLink>
                   </li>
                 </ul>
@@ -245,38 +310,24 @@ const TopMenu = () => {
               <li>
                 <ul>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/dataTable`}>
-                      User Table
+                    <NavLink onClick={addParentActive} to={`${path}/starter`}>
+                      Blank Page
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/gallery`}>
-                      Gallery
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/pricing`}>
-                      Pricing
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/faq`}>
-                      Faqs
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/search`}>
-                      Search
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/maintenance`}>
+                    <NavLink onClick={addParentActive} to={`${path}/maintenance`}>
                       Maintenance
                     </NavLink>
                   </li>
+
                   <li>
-                    <NavLink onClick={addParentActive} to={`${path}/pages/404`}>
+                    <NavLink onClick={addParentActive} to={`${path}/404`}>
                       404
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/comingSoon`}>
+                      Coming Soon
                     </NavLink>
                   </li>
                 </ul>
@@ -506,11 +557,7 @@ const TopMenu = () => {
                       Statistics
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/components/starter`}>
-                      Starter
-                    </NavLink>
-                  </li>
+
                   <li>
                     <NavLink onClick={addParentActive} to={`${path}/components/steps`}>
                       Steps
@@ -560,29 +607,6 @@ const TopMenu = () => {
               Features
             </Link>
             <ul className="subMenu">
-              <li className="has-subMenu-left">
-                <Link to="#" className="parent">
-                  <FeatherIcon icon="grid" />
-                  Icons
-                </Link>
-                <ul className="subMenu">
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/icons/feathers`}>
-                      Feather Icons(svg)
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/icons/font-awesome`}>
-                      Font Awesome
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={addParentActive} to={`${path}/icons/antd`}>
-                      Ant Design Icons
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
               <li className="has-subMenu-left">
                 <Link to="#" className="parent">
                   <FeatherIcon icon="bar-chart-2" />
@@ -645,15 +669,85 @@ const TopMenu = () => {
                 </ul>
               </li>
               <li>
-                <NavLink onClick={addParentActive} to={`${path}/tables`}>
-                  <FeatherIcon icon="cpu" />
-                  Table
-                </NavLink>
-              </li>
-              <li>
                 <NavLink onClick={addParentActive} to={`${path}/forms`}>
                   <FeatherIcon icon="disc" />
                   Form
+                </NavLink>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="cpu" />
+                  Tables
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/tables/basic`}>
+                      Basic Table
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/tables/dataTable`}>
+                      Data Table
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="server" />
+                  Widgets
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/chart`}>
+                      Chart
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/card`}>
+                      Card
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/widgets/mixed`}>
+                      Mixed
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/wizards`}>
+                  <FeatherIcon icon="square" />
+                  Wizards
+                </NavLink>
+              </li>
+              <li className="has-subMenu-left">
+                <Link to="#" className="parent">
+                  <FeatherIcon icon="grid" />
+                  Icons
+                </Link>
+                <ul className="subMenu">
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/feathers`}>
+                      Feather Icons(svg)
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/font-awesome`}>
+                      Font Awesome
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink onClick={addParentActive} to={`${path}/icons/antd`}>
+                      Ant Design Icons
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <NavLink onClick={addParentActive} to={`${path}/editor`}>
+                  <FeatherIcon icon="edit" />
+                  Editor
                 </NavLink>
               </li>
               <li className="has-subMenu-left">

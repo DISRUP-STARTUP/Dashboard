@@ -289,10 +289,52 @@ const Div = Styled.div`
                         transition: 0.3s ease;
                     }
                 }
+                .ant-menu-item,
+                .ant-menu-submenu-title{
+                    a{
+                        position: relative;
+                    }
+                    >span{
+                        width: 100%;
+                    }
+                    .badge{
+                        position: absolute;
+                        &.menuItem {
+                            ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 10px;
+                        }
+                        ${({ theme }) => (theme.rtl ? 'left' : 'right')}: -90px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        display: inline-block;
+                        height: auto;
+                        font-size: 10px;
+                        border-radius: 3px;
+                        padding: 4px 8px;
+                        line-height: 1.4;
+                        letter-spacing: 1px;
+                        color: #fff;
+                        &.badge-primary{
+                            background-color: ${({ theme }) => theme['primary-color']};
+                        }
+                        &.badge-success{
+                            background-color: ${({ theme }) => theme['success-color']};
+                        }
+                        &.badge-text{
+                            font-size: 11px;
+                        }
+                    }
+                }
                 .ant-menu-submenu{
                     .ant-menu-submenu-title{
                         display: flex;
                         align-items: center;
+                        .title{
+                            padding-left: 0;
+                        }
+                        .badge{
+                            font-size: 11px;
+                            ${({ theme }) => (theme.rtl ? 'left' : 'right')}: 50px;
+                        }
                     }
                 }
                 .ant-menu-submenu-inline{
@@ -328,7 +370,7 @@ const Div = Styled.div`
                     &.ant-menu-submenu-open{
                         > .ant-menu-submenu-title{
                             .ant-menu-submenu-arrow{
-                                transform: translateY(4px);
+                                transform: translateY(2px);
                                 &:before{
                                     transform: rotate(45deg) translateX(-3.3px);
                                 }
@@ -426,6 +468,12 @@ const Div = Styled.div`
             }
             & + .atbd-main-layout{
                 ${({ theme }) => (!theme.rtl ? 'margin-left' : 'margin-right')}: 80px;
+            }
+            .ant-menu-item{
+                color: #333;
+                .badge{
+                    display: none;
+                }
             }
         }
     }

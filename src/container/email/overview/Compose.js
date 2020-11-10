@@ -30,9 +30,6 @@ const Compose = ({ close }) => {
 
   return (
     <MailBox size={state.size}>
-      {/* <div className="mailbox-inner">
-        
-      </div> */}
       <div className="header">
         <p>New Message</p>
         <div className="icon-right">
@@ -52,11 +49,11 @@ const Compose = ({ close }) => {
 };
 
 Compose.propTypes = {
-  close: propTypes.func.isRequired,
+  close: propTypes.func,
 };
 
-Compose.default = {
-  onChange: false,
+Compose.defaultProps = {
+  close: () => {},
 };
 
 export default Compose;

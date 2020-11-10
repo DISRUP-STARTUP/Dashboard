@@ -794,6 +794,168 @@ const ErrorWrapper = Styled.div`
   }
 `;
 
+const ComingsoonStyleWrapper = Styled.div`
+  text-align: center;
+  background: #fff;
+  padding: 95px 0;
+  margin-bottom: 30px;
+  @media only screen and (max-width: 1150px){
+    padding: 50px 0;
+  }
+  @media only screen and (max-width: 991px){
+    padding: 30px 0;
+  }
+  .strikingDash-logo{
+    margin-bottom: 155px;
+    @media only screen and (max-width: 1150px){
+      margin-bottom: 85px;
+    }
+    @media only screen and (max-width: 767px){
+      margin-bottom: 25px;
+    }
+    img{
+      max-width: 170px;
+    }
+  }
+  .coming-soon-content{
+    h1{
+      font-size: 58px;
+      font-weight: 600;
+      color: ${({ theme }) => theme['dark-color']};
+      @media only screen and (max-width: 991px){
+        font-size: 48px;
+      }
+      @media only screen and (max-width: 767px){
+        font-size: 40px;
+        line-height: 1.45;
+      }
+      @media only screen and (max-width: 479px){
+        font-size: 30px;
+      }
+    }
+    p{
+      font-size: 17px;
+      max-width: 580px;
+      margin: 0 auto 35px;
+      color: ${({ theme }) => theme['gray-color']};
+    }
+  }
+  .countdwon-data{
+    display: flex;
+    justify-content: center;
+    >span{
+      &:not(:last-child){
+        margin-right: 50px;
+        @media only screen and (max-width: 575px){
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .strikingDash-countdown{
+    .countdown-time{
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: ${({ theme }) => theme['dark-color']};
+      @media only screen and (max-width: 991px){
+        font-size: 32px;
+      }
+      @media only screen and (max-width: 575px){
+        font-size: 26px;
+      }
+    }
+    .countdown-title{
+      font-size: 16px;
+      font-weight: 400;
+      display: block;
+      color: ${({ theme }) => theme['gray-color']};
+    }
+  }
+  .subscription-form{
+    margin-top: 68px;
+    @media only screen and (max-width: 1150px){
+      margin-top: 35px;
+    }
+    .subscription-form-inner{
+      display: flex;
+      justify-content: center;
+      @media only screen and (max-width: 375px){
+        flex-flow: column;
+        margin-bottom: 20px;
+      }
+      .ant-form-item-control-input{
+        margin-right: 20px;
+        @media only screen and (max-width: 375px){
+          margin-right: 0;
+        }
+        .ant-input{
+          min-width: 320px;
+          padding: 12px 20px;
+          @media only screen and (max-width: 767px){
+            min-width: 100%;
+          }
+          &::placeholder{
+            color: ${({ theme }) => theme['extra-light-color']};
+          }
+        }
+      }
+      button{
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+    }
+  }
+  .coming-soon-social{
+    margin-top: 150px;
+    @media only screen and (max-width: 1150px){
+      margin-top: 85px;
+    }
+    @media only screen and (max-width: 767px){
+      margin-top: 30px;
+    }
+    ul{
+      margin-bottom: 30px;
+      li{
+        display: inline-block;
+        &:not(:last-child){
+          margin-right: 15px;
+        }
+        a{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          i,
+          span,
+          svg{
+            color: #fff;
+          }
+          &.facebook{
+            background-color: #3B5998;
+          }
+          &.twitter{
+            background-color: #1DA1F2;
+          }
+          &.globe{
+            background-color: #DD3E7C;
+          }
+          &.github{
+            background-color: #23282D;
+          }
+        }
+      }
+    }
+    p{
+      font-size: 14px;
+      color: ${({ theme }) => theme['light-color']};
+    }
+  }
+`;
+
 const AddUser = Styled.div`
   .form-title{
     font-size: 18px;
@@ -801,7 +963,7 @@ const AddUser = Styled.div`
     margin-bottom: 36px;
   }
   .add-user-wrap{
-    margin-left: 
+   $: 
   }
   .add-user-bottom{
     margin-top: 20px;
@@ -1010,6 +1172,182 @@ const AddUser = Styled.div`
     }
   }
 `;
+const ChangelogWrapper = Styled.div`
+   .ant-card-head{
+     .ant-card-head-title{
+       .v-num{
+        $: 0;
+         font-size: 18px;
+         color: ${({ theme }) => theme['dark-color']};
+       }
+       .sign{
+         font-size: 18px;
+         color: ${({ theme }) => theme['dark-color']};
+         display: inline-block;
+         margin: 0 8px;
+       }
+       .rl-date{
+        $: 0;
+         font-weight: 400;
+         font-size: 16px;
+       }
+     }
+   }
+  .version-list{
+    .version-list__single{
+      &:not(:last-child){
+        margin-bottom: 30px;
+      }
+      ul{
+        li{
+          position: relative;
+          ${({ theme }) => (theme.rtl ? 'padding-right' : 'padding-left')}: 20px;
+          font-size: 16px;
+          color: ${({ theme }) => theme['gray-color']};
+          &:not(:last-child){
+            margin-bottom: 12px;
+          }
+          &:after{
+            position: absolute;
+            ${({ theme }) => (theme.rtl ? 'right' : 'left')}: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            content: "";
+          }
+        }
+        &.version-primary{
+          li{
+            &:after{
+              background-color: ${({ theme }) => theme['primary-color']};
+            }
+          }
+        }
+        &.version-success{
+          li{
+            &:after{
+              background-color: ${({ theme }) => theme['success-color']};
+            }
+          }
+        }
+        &.version-info{
+          li{
+            &:after{
+              background-color: ${({ theme }) => theme['info-color']};
+            }
+          }
+        }
+      }
+    }
+    .version-list__top{
+      .badge{
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: 1.4px;
+        font-weight: 500;
+        display: inline-block;
+        padding: 5px 8px;
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 14px;
+        color: #fff;
+        &.badge-primary{
+          background-color: ${({ theme }) => theme['primary-color']};
+        }
+        &.badge-info{
+          background-color: ${({ theme }) => theme['info-color']};
+        }
+        &.badge-success{
+          background-color: ${({ theme }) => theme['success-color']};
+        }
+      }
+    }
+  }
+
+  .changelog-accordion{
+    margin-top: 30px;
+    .ant-collapse{
+      background-color: transparent;
+      border: 0 none;
+    }
+    .ant-collapse-item{
+      border-radius: 6px;
+      border: 1px solid ${({ theme }) => theme['border-color-normal']};
+      &:not(:last-child){
+        margin-bottom: 20px;
+      }
+      &:last-child{
+        border-radius: 6px;
+        .ant-collapse-header{
+          border-radius: 6px;
+        }
+      }
+    }
+    .ant-collapse-header{
+      border-radius: 6px;
+      padding: 20px 30px 18px 30px !important;
+      @media only screen and (max-width: 575px){
+        padding: 16px 20px 14px 20px !important;
+      }
+      .ant-collapse-arrow{
+        left: auto !important;
+        right: 30px;
+        svg,
+        img{
+          width: 14px;
+        }
+      }
+      .v-num{
+        font-size: 18px;
+        font-weight: 500;
+        color: ${({ theme }) => theme['dark-color']};
+        @media only screen and (max-width: 575px){
+          font-size: 16px;
+        }
+      }
+      .rl-date{
+        font-size: 16px;
+        font-weight: 400;
+        @media only screen and (max-width: 575px){
+          font-size: 14px;
+        }
+      }
+    }
+    .ant-collapse-content{
+      border-radius: 0 0 6px 6px;
+      > .ant-collapse-content-box{
+        padding: 30px 30px 25px;
+      }
+    }
+  }
+`;
+const VersionHistoryList = Styled.div`
+  .history-title{
+    font-size: 11px;
+    margin-bottom: 24px;
+    color: ${({ theme }) => theme['light-gray-color']};
+  }
+  .v-history-list{
+    li{
+      display: flex;
+      justify-content: space-between;
+      &:not(:last-child){
+        margin-bottom: 24px;
+      }
+      .version-name{
+        font-size: 14px;
+        font-weight: 500;
+        color: ${({ theme }) => theme['dark-color']};
+      }
+      .version-date{
+        font-size: 14px;
+        color: ${({ theme }) => theme['light-gray-color']};
+      }
+    }
+  }
+`;
 
 export {
   PricingCard,
@@ -1027,5 +1365,8 @@ export {
   ResultList,
   MaintananceWrapper,
   ErrorWrapper,
+  ComingsoonStyleWrapper,
   AddUser,
+  ChangelogWrapper,
+  VersionHistoryList,
 };

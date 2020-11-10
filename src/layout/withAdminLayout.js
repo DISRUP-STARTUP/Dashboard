@@ -49,7 +49,7 @@ const ThemeLayout = WrappedComponent => {
 
     render() {
       const { collapsed, hide, searchHide, activeSearch } = this.state;
-      const { ChangeLayoutMode, rtl, topMenu } = this.props;
+      const { ChangeLayoutMode, rtl, topMenu, changeRtl, changeLayout } = this.props;
 
       const left = !rtl ? 'left' : 'right';
       const darkMode = ChangeLayoutMode;
@@ -146,6 +146,43 @@ const ThemeLayout = WrappedComponent => {
           backgroundColor: ChangeLayoutMode ? '#ffffff16' : '#F1F2F6',
         };
         return <div style={{ ...style, ...thumbStyle }} props={props} />;
+      };
+
+      const onRtlChange = () => {
+        const html = document.querySelector('html');
+        html.setAttribute('dir', 'rtl');
+        changeRtl(true);
+      };
+
+      const onLtrChange = () => {
+        const html = document.querySelector('html');
+        html.setAttribute('dir', 'ltr');
+        changeRtl(false);
+      };
+
+      const modeChangeDark = () => {
+        changeLayout(true);
+      };
+
+      const modeChangeLight = () => {
+        changeLayout(false);
+      };
+
+      const modeChangeTopNav = () => {
+        changeMenuMode(true);
+      };
+
+      const modeChangeSideNav = () => {
+        changeMenuMode(false);
+      };
+
+      const onEventChange = {
+        onRtlChange,
+        onLtrChange,
+        modeChangeDark,
+        modeChangeLight,
+        modeChangeTopNav,
+        modeChangeSideNav,
       };
 
       return (
@@ -259,6 +296,7 @@ const ThemeLayout = WrappedComponent => {
                         rtl={rtl}
                         toggleCollapsed={toggleCollapsedMobile}
                         darkMode={darkMode}
+                        events={onEventChange}
                       />
                     </Scrollbars>
                   </Sider>

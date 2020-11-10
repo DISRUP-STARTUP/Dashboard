@@ -7,6 +7,7 @@ import { StepsStyle, ActionWrapper } from './style';
 const { Step } = StepsStyle;
 
 const Steps = ({
+  isvertical,
   size,
   current,
   direction,
@@ -58,7 +59,7 @@ const Steps = ({
       type={navigation && 'navigation'}
       style={navigation && stepStyle}
       size={size}
-      current={navigation ? currents : current}
+      current={navigation ? currents : current}      
       direction={direction}
       status={status}
       progressDot={progressDot}
@@ -69,53 +70,98 @@ const Steps = ({
   ) : (
     <>
       <StepsStyle current={currents} direction={direction} status={status} progressDot={progressDot} size={size}>
-        {steps !== undefined && steps.map(item => <Step key={item.title} title={item.title} />)}
+        {steps !== undefined &&
+          steps.map(item => <Step className={item.className && item.className} icon={item.icon && item.icon} key={item.title} title={item.title} />)}
       </StepsStyle>
-
-      <div
-        className="steps-content"
-        style={{ minHeight: height, display: 'flex', justifyContent: 'center', marginTop: 100 }}
-      >
-        {steps[state.currents].content}
-      </div>
-
-      {!isfinished && (
-        <ActionWrapper>
-          {/* <Row justify="center">
-              <Col sm={17} xs={24}> */}
-          <div className="step-action-wrap">
-            <div className="step-action-inner">
-              <Row>
-                <Col xs={24}>
-                  <div className="steps-action">
-                    {state.currents > 0 && (
-                      <Button className="btn-prev" type="light" onClick={() => prev()}>
-                        <FeatherIcon icon="arrow-left" size={16} />
-                        Previous
-                      </Button>
-                    )}
-
-                    {state.currents < steps.length - 1 && (
-                      <Button className="btn-next" type="primary" onClick={() => next()}>
-                        Save & Next
-                        <FeatherIcon icon="arrow-right" size={16} />
-                      </Button>
-                    )}
-
-                    {state.currents === steps.length - 1 && (
-                      <Button type="primary" onClick={onDone}>
-                        Done
-                      </Button>
-                    )}
-                  </div>
-                </Col>
-              </Row>
-            </div>
+      {
+        isvertical ? 
+        <div className="steps-wrapper">
+          <div
+            className="steps-content"
+            style={{ minHeight: height, display: 'flex', justifyContent: 'center', marginTop: 100 }}
+          >
+            {steps[state.currents].content}
           </div>
-          {/* </Col>
-            </Row> */}
-        </ActionWrapper>
-      )}
+
+          {!isfinished && (
+            <ActionWrapper>
+              <div className="step-action-wrap">
+                <div className="step-action-inner">
+                  <Row>
+                    <Col xs={24}>
+                      <div className="steps-action">
+                        {state.currents > 0 && (
+                          <Button className="btn-prev" type="light" onClick={() => prev()}>
+                            <FeatherIcon icon="arrow-left" size={16} />
+                            Previous
+                          </Button>
+                        )}
+
+                        {state.currents < steps.length - 1 && (
+                          <Button className="btn-next" type="primary" onClick={() => next()}>
+                            Save & Next
+                            <FeatherIcon icon="arrow-right" size={16} />
+                          </Button>
+                        )}
+
+                        {state.currents === steps.length - 1 && (
+                          <Button type="primary" onClick={onDone}>
+                            Done
+                          </Button>
+                        )}
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            </ActionWrapper>
+          )}
+        </div>
+        :
+        <>
+          <div
+            className="steps-content"
+            style={{ minHeight: height, display: 'flex', justifyContent: 'center', marginTop: 100 }}
+            >
+              {steps[state.currents].content}
+            </div>
+
+            {!isfinished && (
+              <ActionWrapper>
+                <div className="step-action-wrap">
+                  <div className="step-action-inner">
+                    <Row>
+                      <Col xs={24}>
+                        <div className="steps-action">
+                          {state.currents > 0 && (
+                            <Button className="btn-prev" type="light" onClick={() => prev()}>
+                              <FeatherIcon icon="arrow-left" size={16} />
+                              Previous
+                            </Button>
+                          )}
+
+                          {state.currents < steps.length - 1 && (
+                            <Button className="btn-next" type="primary" onClick={() => next()}>
+                              Save & Next
+                              <FeatherIcon icon="arrow-right" size={16} />
+                            </Button>
+                          )}
+
+                          {state.currents === steps.length - 1 && (
+                            <Button type="primary" onClick={onDone}>
+                              Done
+                            </Button>
+                          )}
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+              </ActionWrapper>
+            )}
+        </>
+      }
+      
     </>
   );
 };
