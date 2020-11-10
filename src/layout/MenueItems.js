@@ -3,6 +3,7 @@ import { Menu } from 'antd';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 import propTypes from 'prop-types';
+import versions from '../demoData/changelog.json';
 
 const { SubMenu } = Menu;
 
@@ -123,9 +124,10 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="pocket" />} key="changelog">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="activity" />} key="changelog">
         <NavLink onClick={toggleCollapsed} to={`${path}/changelog`}>
           Changelog
+          <span className="badge badge-primary menuItem">{versions[0].version}</span>
         </NavLink>
       </Menu.Item>
       {!topMenu && <p className="sidebar-nav-title">Applications</p>}
@@ -179,7 +181,6 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
             Orders
           </NavLink>
         </Menu.Item>
-        {/* <Menu.Item key="15">Credit Card</Menu.Item> */}
         <Menu.Item key="sellers">
           <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/sellers`}>
             Sellers
@@ -191,7 +192,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <SubMenu key="profile" icon={!topMenu && <FeatherIcon icon="user" />} title="Social App">
+      <SubMenu key="profile" icon={!topMenu && <FeatherIcon icon="aperture" />} title="Social App">
         <Menu.Item key="myProfile">
           <NavLink onClick={toggleCollapsed} to={`${path}/profile/myProfile/overview`}>
             My Profile
@@ -226,7 +227,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           Calendar
         </NavLink>
       </Menu.Item>
-      <SubMenu key="users" icon={!topMenu && <FeatherIcon icon="folder" />} title="Users">
+      <SubMenu key="users" icon={!topMenu && <FeatherIcon icon="users" />} title="Users">
         <Menu.Item key="team">
           <NavLink onClick={toggleCollapsed} to={`${path}/users/team`}>
             Team
@@ -248,15 +249,26 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <SubMenu key="contact" icon={!topMenu && <FeatherIcon icon="user-check" />} title="Contact">
+      <SubMenu
+        key="contact"
+        icon={!topMenu && <FeatherIcon icon="user-plus" />}
+        title={
+          <>
+            <span className="title">Contact</span>
+            <span className="badge badge-primary">New</span>
+          </>
+        }
+      >
         <Menu.Item key="addNew">
           <NavLink onClick={toggleCollapsed} to={`${path}/contact/addNew`}>
             Contact Create
+            <span className="badge badge-primary">New</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="grid">
           <NavLink onClick={toggleCollapsed} to={`${path}/contact/grid`}>
             Contact Grid
+            <span className="badge badge-primary">New</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="list">
@@ -266,13 +278,13 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
         </Menu.Item>
       </SubMenu>
 
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="bookmark" />} key="note">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="file-text" />} key="note">
         <NavLink onClick={toggleCollapsed} to={`${path}/app/note/all`}>
           Note
         </NavLink>
       </Menu.Item>
 
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="activity" />} key="to-do">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="check-square" />} key="to-do">
         <NavLink onClick={toggleCollapsed} to={`${path}/app/to-do/`}>
           To Do
         </NavLink>
@@ -593,7 +605,16 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           Forms
         </NavLink>
       </Menu.Item>
-      <SubMenu key="tables" icon={!topMenu && <FeatherIcon icon="layout" />} title="Table">
+      <SubMenu
+        key="tables"
+        icon={!topMenu && <FeatherIcon icon="cpu" />}
+        title={
+          <>
+            <span className="title">Table</span>
+            <span className="badge badge-primary">New</span>
+          </>
+        }
+      >
         <Menu.Item key="basic">
           <NavLink onClick={toggleCollapsed} to={`${path}/tables/basic`}>
             Basic Table
@@ -605,7 +626,16 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <SubMenu key="widgets" icon={!topMenu && <FeatherIcon icon="layout" />} title="Widgets">
+      <SubMenu
+        key="widgets"
+        icon={!topMenu && <FeatherIcon icon="server" />}
+        title={
+          <>
+            <span className="title">Widget</span>
+            <span className="badge badge-primary">New</span>
+          </>
+        }
+      >
         <Menu.Item key="chart">
           <NavLink onClick={toggleCollapsed} to={`${path}/widgets/chart`}>
             Chart
@@ -622,9 +652,10 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="circle" />} key="wizards">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="square" />} key="wizards">
         <NavLink onClick={toggleCollapsed} to={`${path}/wizards`}>
           Wizards
+          <span className="badge badge-primary badge-text menuItem">New</span>
         </NavLink>
       </Menu.Item>
 
@@ -645,9 +676,10 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="edit-3" />} key="editor">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="edit" />} key="editor">
         <NavLink onClick={toggleCollapsed} to={`${path}/editor`}>
           Editor
+          <span className="badge badge-primary">New</span>
         </NavLink>
       </Menu.Item>
       <SubMenu key="maps" icon={!topMenu && <FeatherIcon icon="map" />} title="Maps">
@@ -699,7 +731,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           Blank Page
         </NavLink>
       </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="aperture" />} key="maintenance">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="airplay" />} key="maintenance">
         <NavLink onClick={toggleCollapsed} to={`${path}/maintenance`}>
           Maintenance
         </NavLink>
@@ -709,9 +741,10 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           404
         </NavLink>
       </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="compass" />} key="comingSoon">
+      <Menu.Item icon={!topMenu && <FeatherIcon icon="clock" />} key="comingSoon">
         <NavLink onClick={toggleCollapsed} to={`${path}/comingSoon`}>
           Coming Soon
+          <span className="badge badge-primary badge-text menuItem">New</span>
         </NavLink>
       </Menu.Item>
     </Menu>
