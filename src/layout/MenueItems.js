@@ -9,15 +9,26 @@ const { SubMenu } = Menu;
 
 const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
   const { path } = useRouteMatch();
+
   const pathName = window.location.pathname;
   const pathArray = pathName.split(path);
   const mainPath = pathArray[1];
   const mainPathSplit = mainPath.split('/');
 
   const { onRtlChange, onLtrChange, modeChangeDark, modeChangeLight, modeChangeTopNav, modeChangeSideNav } = events;
-
+  const [openKeys, setOpenKeys] = React.useState(
+    !topMenu ? [`${mainPathSplit.length > 2 ? mainPathSplit[1] : 'dashboard'}`] : [],
+  );
+  const onOpenChange = keys => {
+    setOpenKeys([keys.length && keys[keys.length - 1]]);
+  };
+  const onClick = item => {
+    if (item.keyPath.length === 1) setOpenKeys([]);
+  };
   return (
     <Menu
+      onOpenChange={onOpenChange}
+      onClick={onClick}
       mode={!topMenu || window.innerWidth <= 991 ? 'inline' : 'horizontal'}
       theme={darkMode && 'dark'}
       // // eslint-disable-next-line no-nested-ternary
@@ -32,6 +43,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       }
       defaultOpenKeys={!topMenu ? [`${mainPathSplit.length > 2 ? mainPathSplit[1] : 'dashboard'}`] : []}
       overflowedIndicator={<FeatherIcon icon="more-vertical" />}
+      openKeys={openKeys}
     >
       <SubMenu key="dashboard" icon={!topMenu && <FeatherIcon icon="home" />} title="Dashboard">
         <Menu.Item key="home">
@@ -255,25 +267,23 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
         title={
           <>
             <span className="title">Contact</span>
-            <span className="badge badge-primary">New</span>
+            <span className="badge badge-success">New</span>
           </>
         }
       >
-        <Menu.Item key="addNew">
-          <NavLink onClick={toggleCollapsed} to={`${path}/contact/addNew`}>
-            Contact Create
-            <span className="badge badge-primary">New</span>
-          </NavLink>
-        </Menu.Item>
         <Menu.Item key="grid">
           <NavLink onClick={toggleCollapsed} to={`${path}/contact/grid`}>
             Contact Grid
-            <span className="badge badge-primary">New</span>
           </NavLink>
         </Menu.Item>
         <Menu.Item key="list">
           <NavLink onClick={toggleCollapsed} to={`${path}/contact/list`}>
             Contact List
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="addNew">
+          <NavLink onClick={toggleCollapsed} to={`${path}/contact/addNew`}>
+            Contact Create
           </NavLink>
         </Menu.Item>
       </SubMenu>
@@ -611,7 +621,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
         title={
           <>
             <span className="title">Table</span>
-            <span className="badge badge-primary">New</span>
+            <span className="badge badge-success">New</span>
           </>
         }
       >
@@ -632,7 +642,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
         title={
           <>
             <span className="title">Widget</span>
-            <span className="badge badge-primary">New</span>
+            <span className="badge badge-success">New</span>
           </>
         }
       >
@@ -652,12 +662,48 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="square" />} key="wizards">
-        <NavLink onClick={toggleCollapsed} to={`${path}/wizards`}>
-          Wizards
-          <span className="badge badge-primary badge-text menuItem">New</span>
-        </NavLink>
-      </Menu.Item>
+
+      <SubMenu
+        key="wizards"
+        icon={!topMenu && <FeatherIcon icon="square" />}
+        title={
+          <>
+            <span className="title">Wizards</span>
+            <span className="badge badge-success">New</span>
+          </>
+        }
+      >
+        <Menu.Item key="one">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/one`}>
+            Wizard 1
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="two">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/two`}>
+            Wizard 2
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="three">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/three`}>
+            Wizard 3
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="four">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/four`}>
+            Wizard 4
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="five">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/five`}>
+            Wizard 5
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key="six">
+          <NavLink onClick={toggleCollapsed} to={`${path}/wizards/six`}>
+            Wizard 6
+          </NavLink>
+        </Menu.Item>
+      </SubMenu>
 
       <SubMenu key="icons" icon={!topMenu && <FeatherIcon icon="grid" />} title="Icons">
         <Menu.Item key="feathers">
@@ -679,7 +725,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       <Menu.Item icon={!topMenu && <FeatherIcon icon="edit" />} key="editor">
         <NavLink onClick={toggleCollapsed} to={`${path}/editor`}>
           Editor
-          <span className="badge badge-primary">New</span>
+          <span className="badge badge-success">New</span>
         </NavLink>
       </Menu.Item>
       <SubMenu key="maps" icon={!topMenu && <FeatherIcon icon="map" />} title="Maps">
@@ -718,7 +764,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       </Menu.Item>
       <Menu.Item icon={!topMenu && <FeatherIcon icon="help-circle" />} key="faq">
         <NavLink onClick={toggleCollapsed} to={`${path}/faq`}>
-          Faq`s
+          FAQs
         </NavLink>
       </Menu.Item>
       <Menu.Item icon={!topMenu && <FeatherIcon icon="search" />} key="search">
@@ -744,7 +790,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       <Menu.Item icon={!topMenu && <FeatherIcon icon="clock" />} key="comingSoon">
         <NavLink onClick={toggleCollapsed} to={`${path}/comingSoon`}>
           Coming Soon
-          <span className="badge badge-primary badge-text menuItem">New</span>
+          <span className="badge badge-success">New</span>
         </NavLink>
       </Menu.Item>
     </Menu>
