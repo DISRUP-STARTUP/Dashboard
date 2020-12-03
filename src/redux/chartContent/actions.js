@@ -7,6 +7,14 @@ const actions = {
   YOUTUBE_SUBSCRIBE_SUCCESS: 'YOUTUBE_SUBSCRIBE_SUCCESS',
   YOUTUBE_SUBSCRIBE_ERR: 'YOUTUBE_SUBSCRIBE_ERR',
 
+  CLOSE_DEAL_BEGIN: 'CLOSE_DEAL_BEGIN',
+  CLOSE_DEAL_SUCCESS: 'CLOSE_DEAL_SUCCESS',
+  CLOSE_DEAL_ERR: 'CLOSE_DEAL_ERR',
+
+  RECENT_DEAL_BEGIN: 'RECENT_DEAL_BEGIN',
+  RECENT_DEAL_SUCCESS: 'RECENT_DEAL_SUCCESS',
+  RECENT_DEAL_ERR: 'RECENT_DEAL_ERR',
+
   SOCIAL_TRAFFIC_BEGIN: 'SOCIAL_TRAFFIC_BEGIN',
   SOCIAL_TRAFFIC_SUCCESS: 'SOCIAL_TRAFFIC_SUCCESS',
   SOCIAL_TRAFFIC_ERR: 'SOCIAL_TRAFFIC_ERR',
@@ -403,6 +411,46 @@ const actions = {
   youtubeSubscribeErr: err => {
     return {
       type: actions.YOUTUBE_SUBSCRIBE_ERR,
+      err,
+    };
+  },
+
+  closeDealBegin: () => {
+    return {
+      type: actions.CLOSE_DEAL_BEGIN,
+    };
+  },
+
+  closeDealSuccess: data => {
+    return {
+      type: actions.CLOSE_DEAL_SUCCESS,
+      data,
+    };
+  },
+
+  closeDealErr: err => {
+    return {
+      type: actions.CLOSE_DEAL_ERR,
+      err,
+    };
+  },
+
+  recentDealBegin: () => {
+    return {
+      type: actions.RECENT_DEAL_BEGIN,
+    };
+  },
+
+  recentDealSuccess: data => {
+    return {
+      type: actions.RECENT_DEAL_SUCCESS,
+      data,
+    };
+  },
+
+  recentDealErr: err => {
+    return {
+      type: actions.RECENT_DEAL_ERR,
       err,
     };
   },

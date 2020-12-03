@@ -15,6 +15,8 @@ import {
   generated,
   topSale,
   location,
+  closedDeals,
+  recentDeal,
 } from '../../demoData/dashboardChartContent.json';
 
 const {
@@ -37,6 +39,14 @@ const {
   youtubeSubscribeBegin,
   youtubeSubscribeSuccess,
   youtubeSubscribeErr,
+
+  closeDealBegin,
+  closeDealSuccess,
+  closeDealErr,
+
+  recentDealBegin,
+  recentDealSuccess,
+  recentDealErr,
 
   socialTrafficBegin,
   socialTrafficSuccess,
@@ -133,6 +143,56 @@ const youtubeSubscribeFilterData = value => {
       }, 100);
     } catch (err) {
       dispatch(youtubeSubscribeErr(err));
+    }
+  };
+};
+
+const closeDealGetData = () => {
+  return async dispatch => {
+    const { year } = closedDeals;
+    try {
+      dispatch(closeDealBegin());
+      dispatch(closeDealSuccess(year));
+    } catch (err) {
+      dispatch(closeDealErr(err));
+    }
+  };
+};
+
+const closeDealFilterData = value => {
+  return async dispatch => {
+    try {
+      dispatch(closeDealBegin());
+      setTimeout(() => {
+        dispatch(closeDealSuccess(closedDeals[value]));
+      }, 100);
+    } catch (err) {
+      dispatch(closeDealErr(err));
+    }
+  };
+};
+
+const recentDealGetData = () => {
+  return async dispatch => {
+    const { year } = recentDeal;
+    try {
+      dispatch(recentDealBegin());
+      dispatch(recentDealSuccess(year));
+    } catch (err) {
+      dispatch(recentDealErr(err));
+    }
+  };
+};
+
+const recentDealFilterData = value => {
+  return async dispatch => {
+    try {
+      dispatch(recentDealBegin());
+      setTimeout(() => {
+        dispatch(recentDealSuccess(recentDeal[value]));
+      }, 100);
+    } catch (err) {
+      dispatch(recentDealErr(err));
     }
   };
 };
@@ -534,4 +594,8 @@ export {
   linkdinOverviewFilterData,
   cashFlowGetData,
   cashFlowFilterData,
+  closeDealGetData,
+  closeDealFilterData,
+  recentDealGetData,
+  recentDealFilterData,
 };
