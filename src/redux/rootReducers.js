@@ -7,7 +7,7 @@ import { readNotificationReducer } from './notification/reducers';
 import authReducer from './authentication/reducers';
 import ChangeLayoutMode from './themeLayout/reducers';
 import { teamReducer } from './team/reducers';
-import { userReducer } from './users/reducers';
+import { userReducer, userGroupReducer } from './users/reducers';
 import { sellersReducer } from './sellers/reducers';
 import { headerSearchReducer } from './headerSearch/reducers';
 import orderReducer from './orders/reducers';
@@ -23,6 +23,7 @@ import Note from './note/reducers';
 import Contact from './contact/reducers';
 import Profile from './profile/reducers';
 import Calender from './calendar/reducers';
+import FileManager from './fileManager/reducers';
 
 import { fsCrudReducer, fsSingleCrudReducer } from './firebase/firestore/reducers';
 import firebaseAuth from './firebase/auth/reducers';
@@ -37,6 +38,7 @@ const rootReducers = combineReducers({
   orders: orderReducer,
   sellers: sellersReducer,
   users: userReducer,
+  userGroup: userGroupReducer,
   team: teamReducer,
   auth: authReducer,
   gallery: galleryReducer,
@@ -61,6 +63,7 @@ const rootReducers = combineReducers({
   Profile,
   Calender,
   firebaseAuth,
+  FileManager,
 });
 
 export default rootReducers;

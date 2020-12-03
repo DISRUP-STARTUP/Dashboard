@@ -4,6 +4,18 @@ const Main = Styled.div`
     padding: 0px 30px 20px;
     min-height: 715px;
     background-color: rgb(244, 245, 247);
+    &.grid-boxed{
+        padding: 0px 180px 20px;
+        @media only screen and (max-width: 1599px){
+            padding: 0px 130px 20px;
+        }
+        @media only screen and (max-width: 1399px){
+            padding: 0px 50px 20px;
+        }
+        @media only screen and (max-width: 991px){
+            padding: 0px 30px 20px;
+        }
+    }
     .ant-card-rtl .ant-card-extra{
                 margin-right: 0 !important;
             }
@@ -681,7 +693,8 @@ const Main = Styled.div`
             @media only screen and (max-width: 1399px) {
                 padding: 25px;
             }
-            ${({ theme }) => (theme.rtl ? 'border-right' : 'border-left')}: 1px solid ${({ theme }) => theme['border-color-light']};
+            ${({ theme }) => (theme.rtl ? 'border-right' : 'border-left')}: 1px solid ${({ theme }) =>
+  theme['border-color-light']};
         }
     }
     .editor-compose > div {
