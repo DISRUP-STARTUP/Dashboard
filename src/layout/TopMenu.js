@@ -115,12 +115,7 @@ const TopMenu = () => {
                   </li>
                 </ul>
               </li>
-              <li>
-                <NavLink onClick={addParentActive} to={`${path}/main/chat/private/rofiq@gmail.com`}>
-                  <FeatherIcon icon="message-square" />
-                  Chat
-                </NavLink>
-              </li>
+              
               <li className="has-subMenu-left">
                 <Link to="#" className="parent">
                   <FeatherIcon icon="shopping-cart" />
