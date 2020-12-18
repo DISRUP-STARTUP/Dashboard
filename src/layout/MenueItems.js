@@ -64,11 +64,6 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
             Site Performance
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="eco">
-          <NavLink onClick={toggleCollapsed} to={`${path}/eco`}>
-            Ecommerce
-          </NavLink>
-        </Menu.Item>
         <Menu.Item key="crm">
           <NavLink onClick={toggleCollapsed} to={`${path}/crm`}>
             CRM
@@ -151,74 +146,10 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           </NavLink>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="activity" />} key="changelog">
-        <NavLink onClick={toggleCollapsed} to={`${path}/changelog`}>
-          Changelog
-          <span className="badge badge-primary menuItem">{versions[0].version}</span>
-        </NavLink>
-      </Menu.Item>
+      
       {!topMenu && <p className="sidebar-nav-title">Applications</p>}
-      <SubMenu key="email" icon={!topMenu && <FeatherIcon icon="mail" />} title="Email">
-        <Menu.Item key="inbox">
-          <NavLink onClick={toggleCollapsed} to={`${path}/email/inbox`}>
-            Inbox
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="single">
-          <NavLink onClick={toggleCollapsed} to={`${path}/email/single/1585118055048`}>
-            Read Email
-          </NavLink>
-        </Menu.Item>
-      </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="message-square" />} key="chat">
-        <NavLink onClick={toggleCollapsed} to={`${path}/main/chat/private/rofiq@gmail.com`}>
-          Chat
-        </NavLink>
-      </Menu.Item>
-      <SubMenu key="ecommerce" icon={!topMenu && <FeatherIcon icon="shopping-cart" />} title="eCommerce">
-        <Menu.Item key="products">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/products`}>
-            Products
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="productDetails">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/productDetails/1`}>
-            Product detail
-          </NavLink>
-        </Menu.Item>
-
-        <Menu.Item key="add-product">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/add-product`}>
-            Product Add
-          </NavLink>
-        </Menu.Item>
-
-        <Menu.Item key="edit-product">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/edit-product`}>
-            Product Edit
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="cart">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/cart`}>
-            Cart
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="orders">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/orders`}>
-            Orders
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="sellers">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/sellers`}>
-            Sellers
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="Invoice">
-          <NavLink onClick={toggleCollapsed} to={`${path}/ecommerce/Invoice`}>
-            Invoices
-          </NavLink>
-        </Menu.Item>
-      </SubMenu>
+            
+      
       <SubMenu key="profile" icon={!topMenu && <FeatherIcon icon="aperture" />} title="Social App">
         <Menu.Item key="myProfile">
           <NavLink onClick={toggleCollapsed} to={`${path}/profile/myProfile/overview`}>
@@ -756,67 +687,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
           Settings
         </NavLink>
       </Menu.Item>
-
-      <SubMenu key="gallery" icon={!topMenu && <FeatherIcon icon="image" />} title="Gallery">
-        <Menu.Item key="one">
-          <NavLink onClick={toggleCollapsed} to={`${path}/gallery/one`}>
-            Gallery 1
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key="two">
-          <NavLink onClick={toggleCollapsed} to={`${path}/gallery/two`}>
-            Gallery 2
-          </NavLink>
-        </Menu.Item>
-      </SubMenu>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="dollar-sign" />} key="pricing">
-        <NavLink onClick={toggleCollapsed} to={`${path}/pricing`}>
-          Pricing
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="cast" />} key="banners">
-        <NavLink onClick={toggleCollapsed} to={`${path}/banners`}>
-          Banners
-          <span className="badge badge-success">New</span>
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="book-open" />} key="testimonials">
-        <NavLink onClick={toggleCollapsed} to={`${path}/testimonials`}>
-          Testimonials
-          <span className="badge badge-success">New</span>
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="help-circle" />} key="faq">
-        <NavLink onClick={toggleCollapsed} to={`${path}/faq`}>
-          FAQs
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="search" />} key="search">
-        <NavLink onClick={toggleCollapsed} to={`${path}/search`}>
-          Search Results
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="circle" />} key="starter">
-        <NavLink onClick={toggleCollapsed} to={`${path}/starter`}>
-          Blank Page
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="airplay" />} key="maintenance">
-        <NavLink onClick={toggleCollapsed} to={`${path}/maintenance`}>
-          Maintenance
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="info" />} key="404">
-        <NavLink onClick={toggleCollapsed} to={`${path}/404`}>
-          404
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item icon={!topMenu && <FeatherIcon icon="clock" />} key="comingSoon">
-        <NavLink onClick={toggleCollapsed} to={`${path}/comingSoon`}>
-          Coming Soon
-        </NavLink>
-      </Menu.Item>
-    </Menu>
+      </Menu>
   );
 };
 
